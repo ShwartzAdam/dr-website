@@ -1,0 +1,763 @@
+<title>איך מגיעים אלינו</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#17130F;
+    --surface:#211C16;
+    --surface-alt:#2B251C;
+    --ink:#F5EFE3;
+    --ink-soft:#C7BAA4;
+    --accent:#BC9C72;
+    --accent-soft:rgba(188,156,114,0.16);
+    --accent-2:#8E7350;
+    --accent-2-soft:rgba(142,115,80,0.18);
+    --line:rgba(245,239,227,0.10);
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 28px -12px rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box;}
+  html{color-scheme:dark;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Heebo', 'Segoe UI', Arial, sans-serif;
+    direction:rtl;
+    padding:0 20px;
+    padding-block:0 48px;
+  }
+  .wrap{max-width:640px;margin:0 auto;}
+
+  header.page{
+    padding-block:36px 20px;
+    text-align:center;
+  }
+  .header-brand{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .doctor-photo{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:50% 25%;
+    border:2px solid var(--accent);
+    flex:0 0 auto;
+  }
+  .logo-mark{
+    display:block;
+    width:min(300px, 60%);
+    height:auto;
+    margin:0;
+  }
+  .eyebrow{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.04em;
+    color:var(--accent);
+    text-transform:uppercase;
+  }
+  h1{
+    font-family:'Frank Ruhl Libre', 'Times New Roman', serif;
+    font-weight:700;
+    font-size:clamp(28px,6vw,38px);
+    line-height:1.2;
+    margin:10px 0 10px;
+    text-wrap:balance;
+  }
+  .lede{
+    color:var(--ink-soft);
+    font-size:16px;
+    line-height:1.6;
+    max-width:46ch;
+    margin:0 auto;
+  }
+
+  section{margin-block:28px;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .card-pad{padding:22px;}
+
+  h2{
+    font-family:'Frank Ruhl Libre', serif;
+    font-size:21px;
+    font-weight:700;
+    margin:0 0 4px;
+  }
+  .section-sub{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin:0 0 16px;
+  }
+
+  .addr-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .addr-icon{
+    flex:0 0 auto;
+    width:36px;height:36px;
+    border-radius:10px;
+    background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .addr-text{font-size:16px;line-height:1.55;}
+  .addr-text b{font-weight:700;}
+  .muted{color:var(--ink-soft);font-size:14px;}
+
+  .parking-section{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+  }
+  .parking-row{margin:0;}
+  .parking-item{
+    margin-top:12px;
+    padding-right:48px;
+  }
+  .parking-item-title{font-size:14.5px;font-weight:600;}
+  .parking-item-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin-top:2px;}
+  .parking-links{
+    margin-top:4px;
+    display:flex;
+    gap:6px;
+    font-size:13px;
+  }
+  .parking-links a{
+    color:var(--accent-2);
+    font-weight:600;
+    text-decoration:none;
+  }
+  .parking-links a:hover{text-decoration:underline;}
+  .parking-links span{color:var(--ink-soft);}
+
+  .nav-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    flex:1 1 160px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 16px;
+    border-radius:12px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    border:1px solid transparent;
+    transition:transform .15s ease, filter .15s ease;
+  }
+  .btn:hover{filter:brightness(1.05);}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{
+    background:var(--accent);
+    color:#17130F;
+  }
+  .btn-secondary{
+    background:var(--surface);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  .transit-note{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+    font-size:14px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:8px;
+  }
+
+  .flow-cta{
+    text-align:center;
+    padding-block:8px;
+  }
+  .flow-cta h2{margin:0 0 4px;}
+  .flow-btn{
+    margin-top:18px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:18px 32px;
+    border-radius:999px;
+    background:var(--accent);
+    color:var(--bg);
+    border:none;
+    font-family:'Frank Ruhl Libre', serif;
+    font-weight:700;
+    font-size:19px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    transition:transform .15s ease, filter .15s ease;
+  }
+  .flow-btn:hover{filter:brightness(1.08);}
+  .flow-btn:active{transform:translateY(1px);}
+  .flow-btn.is-open svg{transform:rotate(180deg);}
+  .flow-btn svg{transition:transform .2s ease;}
+  .flow-cta-sub{
+    margin:0;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  #flow[hidden]{display:none;}
+
+  .route-picker{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .route-btn{
+    flex:1 1 160px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 14px;
+    border-radius:12px;
+    font-family:inherit;
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--line);
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .route-btn:hover{border-color:var(--accent);}
+  .route-btn:active{transform:translateY(1px);}
+  .route-btn.is-active{
+    background:var(--accent-soft);
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+  .route-btn-tag{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--surface-alt);
+    font-size:12px;
+    font-weight:700;
+  }
+  .route-btn.is-active .route-btn-tag{
+    background:var(--accent);
+    color:var(--bg);
+  }
+
+  .steps{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .step{
+    display:flex;
+    gap:16px;
+    padding:18px 22px;
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+  }
+  .step:last-child{border-bottom:0;}
+  .step:first-child{border-top-right-radius:18px;border-top-left-radius:18px;}
+  .step:last-child{border-bottom-right-radius:18px;border-bottom-left-radius:18px;}
+  .step-marker{
+    flex:0 0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .step-num{
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#17130F;
+    font-weight:700;
+    font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-variant-numeric:tabular-nums;
+  }
+  .step-rule{
+    flex:1;
+    width:2px;
+    background:var(--line);
+    min-height:16px;
+  }
+  .step:last-child .step-rule{display:none;}
+  .step-photo{
+    flex:0 0 auto;
+    width:88px;height:88px;
+    border-radius:12px;
+    object-fit:cover;
+    border:1px solid var(--line);
+    cursor:zoom-in;
+    transition:opacity .15s ease;
+  }
+  .step-photo:hover{opacity:.85;}
+  .step-body{flex:1;padding-top:2px;}
+  .step-title{font-weight:600;font-size:16px;margin:0 0 3px;}
+  .step-desc{font-size:14px;color:var(--ink-soft);line-height:1.5;margin:0;}
+
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(3,3,10,0.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:56px 20px 20px;
+    z-index:100;
+  }
+  .lightbox[hidden]{display:none;}
+  .lightbox img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:10px;
+    object-fit:contain;
+  }
+  .lightbox-close{
+    position:fixed;
+    top:16px;
+    right:16px;
+    width:44px;height:44px;
+    border-radius:50%;
+    border:1px solid rgba(245,239,227,0.3);
+    background:rgba(245,239,227,0.08);
+    color:#F5EFE3;
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.18);}
+  @media (prefers-reduced-motion: no-preference){
+    .lightbox{animation:fade .15s ease;}
+    @keyframes fade{from{opacity:0;}to{opacity:1;}}
+  }
+
+  .info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  @media (max-width:480px){
+    .info-grid{grid-template-columns:1fr;}
+  }
+  .info-tile{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .info-label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .info-value{font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums;}
+  .phone-link{
+    color:var(--accent-2);
+    font-weight:700;
+    text-decoration:none;
+    font-size:17px;
+  }
+  .phone-link:hover{text-decoration:underline;}
+
+  footer{
+    text-align:center;
+    margin-top:36px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    color:var(--ink-soft);
+    font-size:13px;
+    line-height:1.7;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .step{
+      opacity:0;
+      animation:rise .5s ease forwards;
+    }
+    .step:nth-child(1){animation-delay:.02s;}
+    .step:nth-child(2){animation-delay:.07s;}
+    .step:nth-child(3){animation-delay:.12s;}
+    .step:nth-child(4){animation-delay:.17s;}
+    .step:nth-child(5){animation-delay:.22s;}
+    .step:nth-child(6){animation-delay:.27s;}
+    @keyframes rise{
+      from{opacity:0;transform:translateY(8px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="page">
+    <div class="header-brand">
+      <img class="doctor-photo" src="photos/dr-lorian.jpg" alt="ד&quot;ר מיקי לוריאן">
+      <img class="logo-mark" src="photos/logo-transparent.png" alt="ד&quot;ר מיקי לוריאן">
+    </div>
+    <div class="eyebrow">מרפאת תל אביב</div>
+    <p class="lede">מדריך קצר מהבית עד לדלת המרפאה — כולל ניווט, וההליכה בתוך הבניין צעד־צעד.</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <div class="card-pad">
+        <div class="addr-row">
+          <div class="addr-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="12" cy="9" r="2.4" stroke="var(--accent)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="addr-text">
+            <b>רחוב ברודצקי 43, כניסה ב׳, קומה 5</b><br>
+            <span class="muted">תל אביב</span>
+          </div>
+        </div>
+
+        <div class="parking-section">
+          <div class="addr-row parking-row">
+            <div class="addr-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="4" width="16" height="16" rx="3" stroke="var(--accent)" stroke-width="2"/>
+                <path d="M9.5 16V8h2.6a2.4 2.4 0 0 1 0 4.8H9.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="addr-text"><b>חניה בסביבה</b></div>
+          </div>
+
+          <div class="parking-item">
+            <div class="parking-item-title">חניון קניון רמת אביב</div>
+            <div class="parking-item-desc">רחוב איינשטיין 40 — חניון מקורה, כ־5 דקות הליכה. האפשרות הכי בטוחה למצוא מקום.</div>
+            <div class="parking-links">
+              <a href="https://waze.com/ul?q=%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A8%D7%9E%D7%AA%20%D7%90%D7%91%D7%99%D7%91%20%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%2040%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91&navigate=yes" target="_blank" rel="noopener">Waze</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%2040%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank" rel="noopener">Google Maps</a>
+            </div>
+          </div>
+
+          <div class="parking-item">
+            <div class="parking-item-title">חניה ברחוב בתשלום</div>
+            <div class="parking-item-desc">לאורך ברודצקי ורחובות סמוכים — אזור כחול־לבן, תשלום באפליקציית פנגו או סלופארק.</div>
+          </div>
+
+          <div class="parking-item">
+            <div class="parking-item-title">מגרש חניה לא מסודר</div>
+            <div class="parking-item-desc">מגרש חול קטן וחינמי על רחוב ברודצקי — לא תמיד פנוי, ועלול להיות בעייתי לרכבים נמוכים.</div>
+          </div>
+        </div>
+
+        <div class="nav-buttons">
+          <a class="btn btn-primary" href="https://waze.com/ul?q=%D7%91%D7%A8%D7%95%D7%93%D7%A6%D7%A7%D7%99%2043%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91&navigate=yes" target="_blank" rel="noopener">
+            נווטו עם Waze
+          </a>
+          <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&destination=%D7%91%D7%A8%D7%95%D7%93%D7%A6%D7%A7%D7%99%2043%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank" rel="noopener">
+            נווטו עם Google Maps
+          </a>
+        </div>
+        <div class="transit-note">
+          <span aria-hidden="true">🚌</span>
+          <span>מגיעים בתחבורה ציבורית? קווי אוטובוס רבים עוצרים לאורך רחוב ז'בוטינסקי ופנקס, במרחק הליכה קצרה מהמרפאה.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow-cta">
+    <h2>איך מגיעים אלינו</h2>
+    <p class="flow-cta-sub">מדריך צעד־צעד מהכניסה שלכם עד דלת המרפאה</p>
+    <button type="button" id="flow-trigger" class="flow-btn">
+      <span>הציגו את המדריך</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5v14M12 19l-6-6M12 19l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </section>
+
+  <div id="flow" hidden>
+
+  <section>
+    <h2>מאיפה אתם מגיעים?</h2>
+    <p class="section-sub">בחרו נקודת התחלה, ונראה לכם את הנתיב המדויק מהיכן שאתם עומדים.</p>
+    <div class="route-picker" role="group" aria-label="בחירת כניסה">
+      <button type="button" id="route-a" class="route-btn is-active" data-route="a">
+        <span class="route-btn-tag">A</span> מרחוב ברודצקי
+      </button>
+      <button type="button" id="route-b" class="route-btn" data-route="b">
+        <span class="route-btn-tag">B</span> ליד שופרסל
+      </button>
+      <button type="button" id="route-c" class="route-btn" data-route="c">
+        <span class="route-btn-tag">A</span> מקניון רמת אביב
+      </button>
+    </div>
+  </section>
+
+  <section>
+    <h2>הנתיב שלכם</h2>
+    <p class="section-sub" id="route-sub">חמישה צעדים מכניסה A עד דלת המרפאה.</p>
+    <div class="card steps">
+
+      <div class="step" id="entrance-step">
+        <div class="step-marker"><div class="step-num">1</div><div class="step-rule"></div></div>
+        <img class="step-photo" id="entrance-photo" src="photos/entrance-a-street.jpg?v=3" alt="כניסה A מרחוב ברודצקי" loading="lazy">
+        <div class="step-body">
+          <p class="step-title" id="entrance-title">הגיעו לכניסה A</p>
+          <p class="step-desc" id="entrance-desc">מרחוב ברודצקי — הכניסה הראשית, מסומנת בגדול "43A".</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-mall-plaza" hidden>
+        <div class="step-marker"><div class="step-num">2</div><div class="step-rule"></div></div>
+        <img class="step-photo" src="photos/entrance-a-street.jpg?v=3" alt="חזית 43A, כפי שנראית מהרחבה שמול יציאת הקניון" loading="lazy">
+        <div class="step-body">
+          <p class="step-title">תגיעו לרחבה מול 43A</p>
+          <p class="step-desc">יציאת הקניון מובילה לרחבה החיצונית, מול חזית הבניין המסומנת "43A".</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-lobby">
+        <div class="step-marker"><div class="step-num">2</div><div class="step-rule"></div></div>
+        <img class="step-photo" src="photos/step2-lobby-ab.jpg?v=2" alt="לובי הכניסה עם שילוט כניסה A וכניסה B" loading="lazy">
+        <div class="step-body">
+          <p class="step-title">בלובי, פנו לכיוון המעליות</p>
+          <p class="step-desc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-lobby-mall" hidden>
+        <div class="step-marker"><div class="step-num">3</div><div class="step-rule"></div></div>
+        <img class="step-photo" src="photos/lobby-wide-mall.jpg" alt="מבט רחב על הלובי עם שילוט כניסה A וכניסה B" loading="lazy">
+        <div class="step-body">
+          <p class="step-title">בלובי, פנו לכיוון המעליות</p>
+          <p class="step-desc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-elevator">
+        <div class="step-marker"><div class="step-num">3</div><div class="step-rule"></div></div>
+        <img class="step-photo" src="photos/step3-elevator.jpg?v=2" alt="לובי מעליות עם לוח קומות" loading="lazy">
+        <div class="step-body">
+          <p class="step-title">עלו במעלית לקומה 5</p>
+          <p class="step-desc">לוח הדיירים שליד המעלית מציג את ד"ר מיקי לוריאן בקומה 5, יחידה 9.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-corridor">
+        <div class="step-marker"><div class="step-num">4</div><div class="step-rule"></div></div>
+        <img class="step-photo" src="photos/step4-corridor.jpg?v=2" alt="מסדרון קומה 5 עם ספרת 5 ירוקה גדולה" loading="lazy">
+        <div class="step-body">
+          <p class="step-title">בצאתכם מהמעלית, המשיכו במסדרון</p>
+          <p class="step-desc">הספרה הירוקה הגדולה "5" על הקיר מאשרת שהגעתם לקומה הנכונה.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker"><div class="step-num">5</div><div class="step-rule"></div></div>
+        <img class="step-photo" src="photos/step5-door.jpg?v=2" alt="דלת המרפאה עם שלט ד״ר מיקי לוריאן ומספר 9" loading="lazy">
+        <div class="step-body">
+          <p class="step-title">דלת המרפאה — יחידה 9</p>
+          <p class="step-desc">השלט השחור עם הלוגו ושם ד"ר לוריאן נמצא ליד דלת הזכוכית. אין צורך לצלצל.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker"><div class="step-num">6</div></div>
+        <img class="step-photo" src="photos/step6-reception.jpg?v=2" alt="דלפק הקבלה של המרפאה" loading="lazy">
+        <div class="step-body">
+          <p class="step-title">הגעתם!</p>
+          <p class="step-desc">התייצבו בקבלה, ואנחנו נדאג להמשך.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  </div>
+
+  <section>
+    <h2>לפני שיוצאים</h2>
+    <div class="info-grid">
+      <div class="info-tile">
+        <div class="info-label">שעות קבלה</div>
+        <div class="info-value">א׳–ה׳: 8:00–19:00<br>ו׳: 8:00–13:00</div>
+      </div>
+      <div class="info-tile">
+        <div class="info-label">טלפון</div>
+        <div class="info-value"><a class="phone-link" href="tel:0542221733">054-222-1733</a><br>מענה טלפוני 8:30–19:30</div>
+      </div>
+      <div class="info-tile">
+        <div class="info-label">כתובת מדויקת</div>
+        <div class="info-value">ברודצקי 43, כניסה ב׳, קומה 5</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    ד"ר מיקי לוריאן — שירותי בריאות בע"מ<br>
+    מתקשים למצוא אותנו? התקשרו ונדריך אתכם בטלפון.
+  </footer>
+
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="סגירה">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script type="module">
+  import { animate } from "https://cdn.jsdelivr.net/npm/motion@11.13.5/mini/+esm";
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const ROUTES = {
+    a: {
+      photo: 'photos/entrance-a-street.jpg?v=3',
+      alt: 'כניסה A מרחוב ברודצקי',
+      title: 'הגיעו לכניסה A',
+      desc: 'מרחוב ברודצקי — הכניסה הראשית, מסומנת בגדול "43A".',
+      sub: 'ארבעה צעדים מכניסה A עד דלת המרפאה.',
+      skip: ['step-mall-plaza', 'step-lobby-mall', 'step-elevator']
+    },
+    b: {
+      photo: 'photos/entrance-b-shufersal.jpg?v=2',
+      alt: 'כניסה B ליד שופרסל',
+      title: 'הגיעו לכניסה B',
+      desc: 'בצד המבנה, ליד שופרסל — שילוט "43B" עם חץ מכוון פנימה.',
+      sub: 'ארבעה צעדים מכניסה B עד דלת המרפאה — עולים ישירות למעלית.',
+      skip: ['step-mall-plaza', 'step-lobby', 'step-lobby-mall', 'step-corridor']
+    },
+    c: {
+      photo: 'photos/entrance-c-mall.jpg?v=2',
+      alt: 'יציאה מקניון רמת אביב לכיוון כניסה A',
+      title: 'צאו מהקניון לכיוון כניסה A',
+      desc: 'מקניון רמת אביב — יוצאים מהקניון ומגיעים לאותה כניסה A, רק מהכיוון השני.',
+      sub: 'חמישה צעדים מיציאת הקניון עד דלת המרפאה.',
+      skip: ['step-lobby', 'step-elevator']
+    }
+  };
+
+  const photoEl = document.getElementById('entrance-photo');
+  const titleEl = document.getElementById('entrance-title');
+  const descEl = document.getElementById('entrance-desc');
+  const subEl = document.getElementById('route-sub');
+  const buttons = document.querySelectorAll('.route-btn');
+  const allSteps = document.querySelectorAll('.steps .step');
+
+  function fillRoute(route){
+    photoEl.src = route.photo;
+    photoEl.alt = route.alt;
+    titleEl.textContent = route.title;
+    descEl.textContent = route.desc;
+    subEl.textContent = route.sub;
+
+    let n = 0;
+    allSteps.forEach(step => {
+      const isSkipped = route.skip.includes(step.id);
+      step.hidden = isSkipped;
+      if (!isSkipped) {
+        n += 1;
+        step.querySelector('.step-num').textContent = n;
+      }
+    });
+  }
+
+  async function applyRoute(route){
+    const fading = [photoEl, titleEl, descEl, subEl];
+    if (!reduceMotion) {
+      await animate(fading, { opacity: [1, 0] }, { duration: 0.12, easing: 'ease-in' }).finished;
+    }
+    fillRoute(route);
+    if (!reduceMotion) {
+      animate(fading, { opacity: [0, 1] }, { duration: 0.22, easing: 'ease-out' });
+    }
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const route = ROUTES[btn.dataset.route];
+      if (!route) return;
+      applyRoute(route);
+      buttons.forEach(b => b.classList.toggle('is-active', b === btn));
+    });
+  });
+
+  fillRoute(ROUTES.a);
+
+  const flowTrigger = document.getElementById('flow-trigger');
+  const flow = document.getElementById('flow');
+  flowTrigger.addEventListener('click', async () => {
+    const opening = flow.hidden;
+    if (opening) {
+      flow.hidden = false;
+      flowTrigger.classList.add('is-open');
+      if (!reduceMotion) {
+        await animate(flow, { opacity: [0, 1], transform: ['translateY(-8px)', 'translateY(0)'] }, { duration: 0.25, easing: 'ease-out' }).finished;
+      }
+      flow.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    } else {
+      flowTrigger.classList.remove('is-open');
+      if (!reduceMotion) {
+        await animate(flow, { opacity: [1, 0] }, { duration: 0.15, easing: 'ease-in' }).finished;
+      }
+      flow.hidden = true;
+    }
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt){
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    history.pushState({ lightbox: true }, '');
+    if (!reduceMotion) {
+      animate(lightboxImg, { opacity: [0, 1], scale: [0.94, 1] }, { duration: 0.18, easing: 'ease-out' });
+    }
+  }
+  async function closeLightbox(){
+    if (lightbox.hidden) return;
+    if (!reduceMotion) {
+      await animate(lightboxImg, { opacity: [1, 0], scale: [1, 0.96] }, { duration: 0.12, easing: 'ease-in' }).finished;
+    }
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+    if (history.state && history.state.lightbox) history.back();
+  }
+
+  document.querySelectorAll('.step-photo').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  window.addEventListener('popstate', () => {
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+  });
+</script>
