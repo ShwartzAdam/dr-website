@@ -300,9 +300,14 @@
     min-height:16px;
   }
   .step:last-child .step-rule{display:none;}
-  .step-photo{
+  .step-photo-wrap{
+    position:relative;
     flex:0 0 auto;
-    width:88px;height:88px;
+    width:116px;height:88px;
+  }
+  .step-photo{
+    width:100%;height:100%;
+    display:block;
     border-radius:12px;
     object-fit:cover;
     border:1px solid var(--line);
@@ -310,6 +315,18 @@
     transition:opacity .15s ease;
   }
   .step-photo:hover{opacity:.85;}
+  .step-photo-wrap::after{
+    content:"";
+    position:absolute;
+    inset-inline-end:6px;
+    inset-block-end:6px;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:rgba(23,19,15,0.78) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5EFE3' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat center;
+    background-size:16px 16px;
+    border:1px solid rgba(245,239,227,0.35);
+    pointer-events:none;
+  }
   .step-body{flex:1;padding-top:2px;}
   .step-title{font-weight:600;font-size:16px;margin:0 0 3px;}
   .step-desc{font-size:14px;color:var(--ink-soft);line-height:1.5;margin:0;}
@@ -523,7 +540,7 @@
 
       <div class="step" id="entrance-step">
         <div class="step-marker"><div class="step-num">1</div><div class="step-rule"></div></div>
-        <img class="step-photo" id="entrance-photo" src="photos/entrance-a-street.jpg?v=3" alt="כניסה A מרחוב ברודצקי" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" id="entrance-photo" src="photos/entrance-a-street.jpg?v=3" alt="כניסה A מרחוב ברודצקי" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title" id="entrance-title">הגיעו לכניסה A</p>
           <p class="step-desc" id="entrance-desc">מרחוב ברודצקי — הכניסה הראשית, מסומנת בגדול "43A".</p>
@@ -532,7 +549,7 @@
 
       <div class="step" id="step-mall-plaza" hidden>
         <div class="step-marker"><div class="step-num">2</div><div class="step-rule"></div></div>
-        <img class="step-photo" src="photos/entrance-a-street.jpg?v=3" alt="חזית 43A, כפי שנראית מהרחבה שמול יציאת הקניון" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/entrance-a-street.jpg?v=3" alt="חזית 43A, כפי שנראית מהרחבה שמול יציאת הקניון" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title">תגיעו לרחבה מול 43A</p>
           <p class="step-desc">יציאת הקניון מובילה לרחבה החיצונית, מול חזית הבניין המסומנת "43A".</p>
@@ -541,7 +558,7 @@
 
       <div class="step" id="step-lobby">
         <div class="step-marker"><div class="step-num">2</div><div class="step-rule"></div></div>
-        <img class="step-photo" src="photos/step2-lobby-ab.jpg?v=2" alt="לובי הכניסה עם שילוט כניסה A וכניסה B" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step2-lobby-ab.jpg?v=2" alt="לובי הכניסה עם שילוט כניסה A וכניסה B" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title">בלובי, פנו לכיוון המעליות</p>
           <p class="step-desc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
@@ -550,7 +567,7 @@
 
       <div class="step" id="step-lobby-mall" hidden>
         <div class="step-marker"><div class="step-num">3</div><div class="step-rule"></div></div>
-        <img class="step-photo" src="photos/lobby-wide-mall.jpg" alt="מבט רחב על הלובי עם שילוט כניסה A וכניסה B" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/lobby-wide-mall.jpg" alt="מבט רחב על הלובי עם שילוט כניסה A וכניסה B" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title">בלובי, פנו לכיוון המעליות</p>
           <p class="step-desc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
@@ -559,7 +576,7 @@
 
       <div class="step" id="step-elevator">
         <div class="step-marker"><div class="step-num">3</div><div class="step-rule"></div></div>
-        <img class="step-photo" src="photos/step3-elevator.jpg?v=2" alt="לובי מעליות עם לוח קומות" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step3-elevator.jpg?v=2" alt="לובי מעליות עם לוח קומות" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title">עלו במעלית לקומה 5</p>
           <p class="step-desc">לוח הדיירים שליד המעלית מציג את ד"ר מיקי לוריאן בקומה 5, יחידה 9.</p>
@@ -568,7 +585,7 @@
 
       <div class="step" id="step-corridor">
         <div class="step-marker"><div class="step-num">4</div><div class="step-rule"></div></div>
-        <img class="step-photo" src="photos/step4-corridor.jpg?v=2" alt="מסדרון קומה 5 עם ספרת 5 ירוקה גדולה" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step4-corridor.jpg?v=2" alt="מסדרון קומה 5 עם ספרת 5 ירוקה גדולה" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title">בצאתכם מהמעלית, המשיכו במסדרון</p>
           <p class="step-desc">הספרה הירוקה הגדולה "5" על הקיר מאשרת שהגעתם לקומה הנכונה.</p>
@@ -577,7 +594,7 @@
 
       <div class="step">
         <div class="step-marker"><div class="step-num">5</div><div class="step-rule"></div></div>
-        <img class="step-photo" src="photos/step5-door.jpg?v=2" alt="דלת המרפאה עם שלט ד״ר מיקי לוריאן ומספר 9" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step5-door.jpg?v=2" alt="דלת המרפאה עם שלט ד״ר מיקי לוריאן ומספר 9" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title">דלת המרפאה — יחידה 9</p>
           <p class="step-desc">השלט השחור עם הלוגו ושם ד"ר לוריאן נמצא ליד דלת הזכוכית. אין צורך לצלצל.</p>
@@ -586,7 +603,7 @@
 
       <div class="step">
         <div class="step-marker"><div class="step-num">6</div></div>
-        <img class="step-photo" src="photos/step6-reception.jpg?v=2" alt="דלפק הקבלה של המרפאה" loading="lazy">
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step6-reception.jpg?v=2" alt="דלפק הקבלה של המרפאה" loading="lazy"></div>
         <div class="step-body">
           <p class="step-title">הגעתם!</p>
           <p class="step-desc">התייצבו בקבלה, ואנחנו נדאג להמשך.</p>
