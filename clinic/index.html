@@ -33,7 +33,7 @@
   .wrap{max-width:640px;margin:0 auto;}
 
   header.page{
-    padding-block:36px 20px;
+    padding-block:0 20px;
     text-align:center;
   }
   .header-brand{
@@ -135,6 +135,7 @@
   .parking-links{
     margin-top:4px;
     display:flex;
+    flex-wrap:wrap;
     gap:6px;
     font-size:13px;
   }
@@ -164,6 +165,7 @@
     font-size:15px;
     text-decoration:none;
     border:1px solid transparent;
+    white-space:nowrap;
     transition:transform .15s ease, filter .15s ease;
   }
   .btn:hover{filter:brightness(1.05);}
@@ -210,9 +212,9 @@
     background:var(--accent);
     color:var(--bg);
     border:none;
-    font-family:'Frank Ruhl Libre', serif;
+    font-family:inherit;
     font-weight:700;
-    font-size:19px;
+    font-size:17px;
     cursor:pointer;
     box-shadow:var(--shadow);
     transition:transform .15s ease, filter .15s ease;
