@@ -42,7 +42,61 @@
     padding:0 20px;
     padding-block:0 48px;
   }
+  html[dir="ltr"] body{direction:ltr;}
   .wrap{max-width:640px;margin:0 auto;}
+
+  .lang-switch{
+    position:relative;
+    display:flex;
+    justify-content:flex-end;
+    padding-top:16px;
+    margin-bottom:-4px;
+  }
+  .lang-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .lang-btn:hover{border-color:var(--accent);}
+  .lang-menu{
+    position:absolute;
+    inset-block-start:calc(100% + 6px);
+    inset-inline-end:0;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:6px;
+    display:flex;
+    flex-direction:column;
+    min-width:140px;
+    z-index:10;
+  }
+  .lang-menu[hidden]{display:none;}
+  .lang-menu button{
+    display:block;
+    width:100%;
+    text-align:start;
+    padding:9px 12px;
+    border:none;
+    background:none;
+    border-radius:8px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .lang-menu button:hover{background:var(--accent-soft);}
+  .lang-menu button.is-active{color:var(--accent);font-weight:700;}
 
   header.page{
     padding-block:0 20px;
@@ -140,7 +194,7 @@
   .parking-row{margin:0;}
   .parking-item{
     margin-top:12px;
-    padding-right:48px;
+    padding-inline-start:48px;
   }
   .parking-item-title{font-size:14.5px;font-weight:600;}
   .parking-item-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin-top:2px;}
@@ -377,7 +431,7 @@
   .lightbox-close{
     position:fixed;
     top:16px;
-    right:16px;
+    inset-inline-end:16px;
     width:44px;height:44px;
     border-radius:50%;
     border:1px solid rgba(245,239,227,0.3);
@@ -458,20 +512,33 @@
 
 <div class="wrap">
 
+  <div class="lang-switch">
+    <button type="button" id="lang-btn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
+      <span aria-hidden="true">🌐</span>
+      <span id="lang-btn-label">עברית</span>
+    </button>
+    <div class="lang-menu" id="lang-menu" hidden role="menu">
+      <button type="button" data-lang="he" role="menuitem">עברית</button>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="ru" role="menuitem">Русский</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
+    </div>
+  </div>
+
   <header class="page">
     <div class="header-brand">
-      <img class="doctor-photo" src="photos/dr-lorian.jpg" alt="ד&quot;ר מיקי לוריאן">
-      <img class="logo-mark" src="photos/logo-transparent.png" alt="ד&quot;ר מיקי לוריאן">
+      <img class="doctor-photo" src="photos/dr-lorian.jpg" alt="ד&quot;ר מיקי לוריאן" data-i18n-alt="doctorAlt">
+      <img class="logo-mark" src="photos/logo-transparent.png" alt="ד&quot;ר מיקי לוריאן" data-i18n-alt="doctorAlt">
     </div>
-    <div class="eyebrow">מרפאת תל אביב</div>
-    <p class="lede">מדריך קצר מהבית עד לדלת המרפאה — כולל ניווט, וההליכה בתוך הבניין צעד־צעד.</p>
+    <div class="eyebrow" data-i18n="eyebrow">מרפאת תל אביב</div>
+    <p class="lede" data-i18n="lede">מדריך קצר מהבית עד לדלת המרפאה — כולל ניווט, וההליכה בתוך הבניין צעד־צעד.</p>
   </header>
 
   <section class="flow-cta">
-    <h2>איך מגיעים אלינו</h2>
-    <p class="flow-cta-sub">מדריך צעד־צעד מהכניסה שלכם עד דלת המרפאה</p>
+    <h2 data-i18n="flowH2">איך מגיעים אלינו</h2>
+    <p class="flow-cta-sub" data-i18n="flowSub">מדריך צעד־צעד מהכניסה שלכם עד דלת המרפאה</p>
     <button type="button" id="flow-trigger" class="flow-btn">
-      <span>הציגו את המדריך</span>
+      <span data-i18n="flowBtn">הציגו את המדריך</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M12 5v14M12 19l-6-6M12 19l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -489,19 +556,19 @@
             </svg>
           </div>
           <div class="addr-text">
-            <b>רחוב ברודצקי 43, כניסה ב׳, קומה 5</b><br>
-            <span class="muted">תל אביב</span>
+            <b data-i18n="addrLine">רחוב ברודצקי 43, כניסה ב׳, קומה 5</b><br>
+            <span class="muted" data-i18n="addrCity">תל אביב</span>
           </div>
         </div>
 
         <div class="nav-buttons">
           <a class="btn btn-primary" href="https://waze.com/ul?q=%D7%91%D7%A8%D7%95%D7%93%D7%A6%D7%A7%D7%99%2043%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91&navigate=yes" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-            נווטו עם Waze
+            <span data-i18n="wazeBtn">נווטו עם Waze</span>
           </a>
           <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=%D7%91%D7%A8%D7%95%D7%93%D7%A6%D7%A7%D7%99%2043%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="2"/></svg>
-            נווטו עם Google Maps
+            <span data-i18n="gmapsBtn">נווטו עם Google Maps</span>
           </a>
         </div>
 
@@ -513,33 +580,33 @@
                 <path d="M9.5 16V8h2.6a2.4 2.4 0 0 1 0 4.8H9.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <div class="addr-text"><b>חניה בסביבה</b></div>
+            <div class="addr-text"><b data-i18n="parkingHeader">חניה בסביבה</b></div>
           </div>
 
           <div class="parking-item">
-            <div class="parking-item-title">חניון קניון רמת אביב</div>
-            <div class="parking-item-desc">רחוב איינשטיין 40 — חניון מקורה, כ־5 דקות הליכה. האפשרות הכי בטוחה למצוא מקום.</div>
+            <div class="parking-item-title" data-i18n="parking1Title">חניון קניון רמת אביב</div>
+            <div class="parking-item-desc" data-i18n="parking1Desc">רחוב איינשטיין 40 — חניון מקורה, כ־5 דקות הליכה. האפשרות הכי בטוחה למצוא מקום.</div>
             <div class="parking-links">
               <a class="btn btn-secondary btn-sm" href="https://waze.com/ul?q=%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A8%D7%9E%D7%AA%20%D7%90%D7%91%D7%99%D7%91%20%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%2040%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91&navigate=yes" target="_blank" rel="noopener">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-                Waze לחניון
+                <span data-i18n="wazeParking">Waze לחניון</span>
               </a>
               <a class="btn btn-secondary btn-sm" href="https://www.google.com/maps/dir/?api=1&destination=%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%2040%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank" rel="noopener">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="2"/></svg>
-                Google Maps לחניון
+                <span data-i18n="gmapsParking">Google Maps לחניון</span>
               </a>
             </div>
           </div>
 
           <div class="parking-item">
-            <div class="parking-item-title">חניה ברחוב בתשלום</div>
-            <div class="parking-item-desc">לאורך ברודצקי ורחובות סמוכים — אזור כחול־לבן, תשלום באפליקציית פנגו או סלופארק.</div>
+            <div class="parking-item-title" data-i18n="parking2Title">חניה ברחוב בתשלום</div>
+            <div class="parking-item-desc" data-i18n="parking2Desc">לאורך ברודצקי ורחובות סמוכים — אזור כחול־לבן, תשלום באפליקציית פנגו או סלופארק.</div>
           </div>
         </div>
 
         <div class="transit-note">
           <span aria-hidden="true">🚌</span>
-          <span>מגיעים בתחבורה ציבורית? קווי אוטובוס רבים עוצרים לאורך רחוב ז'בוטינסקי ופנקס, במרחק הליכה קצרה מהמרפאה.</span>
+          <span data-i18n="transitNote">מגיעים בתחבורה ציבורית? קווי אוטובוס רבים עוצרים לאורך רחוב ז'בוטינסקי ופנקס, במרחק הליכה קצרה מהמרפאה.</span>
         </div>
       </div>
     </div>
@@ -548,23 +615,23 @@
   <div id="flow" hidden>
 
   <section>
-    <h2>מאיפה אתם מגיעים?</h2>
-    <p class="section-sub">בחרו נקודת התחלה, ונראה לכם את הנתיב המדויק מהיכן שאתם עומדים.</p>
-    <div class="route-picker" role="group" aria-label="בחירת כניסה">
+    <h2 data-i18n="routeH2">מאיפה אתם מגיעים?</h2>
+    <p class="section-sub" data-i18n="routeSub">בחרו נקודת התחלה, ונראה לכם את הנתיב המדויק מהיכן שאתם עומדים.</p>
+    <div class="route-picker" role="group" aria-label="בחירת כניסה" data-i18n-aria="routeGroupAria">
       <button type="button" id="route-a" class="route-btn is-active" data-route="a">
-        <span class="route-btn-tag">A</span> מרחוב ברודצקי
+        <span class="route-btn-tag">A</span> <span data-i18n="routeALabel">מרחוב ברודצקי</span>
       </button>
       <button type="button" id="route-b" class="route-btn" data-route="b">
-        <span class="route-btn-tag">B</span> ליד שופרסל
+        <span class="route-btn-tag">B</span> <span data-i18n="routeBLabel">ליד שופרסל</span>
       </button>
       <button type="button" id="route-c" class="route-btn" data-route="c">
-        <span class="route-btn-tag">A</span> מקניון רמת אביב
+        <span class="route-btn-tag">A</span> <span data-i18n="routeCLabel">מקניון רמת אביב</span>
       </button>
     </div>
   </section>
 
   <section>
-    <h2>הנתיב שלכם</h2>
+    <h2 data-i18n="yourRouteH2">הנתיב שלכם</h2>
     <p class="section-sub" id="route-sub">חמישה צעדים מכניסה A עד דלת המרפאה.</p>
     <div class="card steps">
 
@@ -579,64 +646,64 @@
 
       <div class="step" id="step-mall-plaza" hidden>
         <div class="step-marker"><div class="step-num">2</div><div class="step-rule"></div></div>
-        <div class="step-photo-wrap"><img class="step-photo" src="photos/mall-plaza-43a.jpg" alt="חזית 43A, כפי שנראית מהרחבה שמול יציאת הקניון" loading="lazy"></div>
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/mall-plaza-43a.jpg" alt="חזית 43A, כפי שנראית מהרחבה שמול יציאת הקניון" loading="lazy" data-i18n-alt="mallPlazaAlt"></div>
         <div class="step-body">
-          <p class="step-title">תגיעו לרחבה מול 43A</p>
-          <p class="step-desc">יציאת הקניון מובילה לרחבה החיצונית, מול חזית הבניין המסומנת "43A".</p>
+          <p class="step-title" data-i18n="mallPlazaTitle">תגיעו לרחבה מול 43A</p>
+          <p class="step-desc" data-i18n="mallPlazaDesc">יציאת הקניון מובילה לרחבה החיצונית, מול חזית הבניין המסומנת "43A".</p>
         </div>
       </div>
 
       <div class="step" id="step-lobby">
         <div class="step-marker"><div class="step-num">2</div><div class="step-rule"></div></div>
-        <div class="step-photo-wrap"><img class="step-photo" src="photos/step2-lobby-ab.jpg?v=2" alt="לובי הכניסה עם שילוט כניסה A וכניסה B" loading="lazy"></div>
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step2-lobby-ab.jpg?v=2" alt="לובי הכניסה עם שילוט כניסה A וכניסה B" loading="lazy" data-i18n-alt="lobbyAlt"></div>
         <div class="step-body">
-          <p class="step-title">בלובי, פנו לכיוון המעליות</p>
-          <p class="step-desc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
+          <p class="step-title" data-i18n="lobbyTitle">בלובי, פנו לכיוון המעליות</p>
+          <p class="step-desc" data-i18n="lobbyDesc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
         </div>
       </div>
 
       <div class="step" id="step-lobby-mall" hidden>
         <div class="step-marker"><div class="step-num">3</div><div class="step-rule"></div></div>
-        <div class="step-photo-wrap"><img class="step-photo" src="photos/lobby-wide-mall.jpg" alt="מבט רחב על הלובי עם שילוט כניסה A וכניסה B" loading="lazy"></div>
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/lobby-wide-mall.jpg" alt="מבט רחב על הלובי עם שילוט כניסה A וכניסה B" loading="lazy" data-i18n-alt="lobbyMallAlt"></div>
         <div class="step-body">
-          <p class="step-title">בלובי, פנו לכיוון המעליות</p>
-          <p class="step-desc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
+          <p class="step-title" data-i18n="lobbyTitle">בלובי, פנו לכיוון המעליות</p>
+          <p class="step-desc" data-i18n="lobbyDesc">מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.</p>
         </div>
       </div>
 
       <div class="step" id="step-elevator">
         <div class="step-marker"><div class="step-num">3</div><div class="step-rule"></div></div>
-        <div class="step-photo-wrap"><img class="step-photo" src="photos/step3-elevator.jpg?v=2" alt="לובי מעליות עם לוח קומות" loading="lazy"></div>
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step3-elevator.jpg?v=2" alt="לובי מעליות עם לוח קומות" loading="lazy" data-i18n-alt="elevatorAlt"></div>
         <div class="step-body">
-          <p class="step-title">עלו במעלית לקומה 5</p>
-          <p class="step-desc">לוח הדיירים שליד המעלית מציג את ד"ר מיקי לוריאן בקומה 5, יחידה 9.</p>
+          <p class="step-title" data-i18n="elevatorTitle">עלו במעלית לקומה 5</p>
+          <p class="step-desc" data-i18n="elevatorDesc">לוח הדיירים שליד המעלית מציג את ד"ר מיקי לוריאן בקומה 5, יחידה 9.</p>
         </div>
       </div>
 
       <div class="step" id="step-corridor">
         <div class="step-marker"><div class="step-num">4</div><div class="step-rule"></div></div>
-        <div class="step-photo-wrap"><img class="step-photo" src="photos/step4-corridor.jpg?v=2" alt="מסדרון קומה 5 עם ספרת 5 ירוקה גדולה" loading="lazy"></div>
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step4-corridor.jpg?v=2" alt="מסדרון קומה 5 עם ספרת 5 ירוקה גדולה" loading="lazy" data-i18n-alt="corridorAlt"></div>
         <div class="step-body">
-          <p class="step-title">בצאתכם מהמעלית, המשיכו במסדרון עד הסוף</p>
-          <p class="step-desc">הספרה הירוקה הגדולה "5" על הקיר מאשרת שהגעתם לקומה הנכונה.</p>
+          <p class="step-title" data-i18n="corridorTitle">בצאתכם מהמעלית, המשיכו במסדרון עד הסוף</p>
+          <p class="step-desc" data-i18n="corridorDesc">הספרה הירוקה הגדולה "5" על הקיר מאשרת שהגעתם לקומה הנכונה.</p>
         </div>
       </div>
 
       <div class="step">
         <div class="step-marker"><div class="step-num">5</div><div class="step-rule"></div></div>
-        <div class="step-photo-wrap"><img class="step-photo" src="photos/step5-door.jpg?v=2" alt="דלת המרפאה עם שלט ד״ר מיקי לוריאן ומספר 9" loading="lazy"></div>
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step5-door.jpg?v=2" alt="דלת המרפאה עם שלט ד״ר מיקי לוריאן ומספר 9" loading="lazy" data-i18n-alt="doorAlt"></div>
         <div class="step-body">
-          <p class="step-title">דלת המרפאה — יחידה 9</p>
-          <p class="step-desc">השלט השחור עם הלוגו ושם ד"ר לוריאן נמצא ליד דלת הזכוכית. אין צורך לצלצל.</p>
+          <p class="step-title" data-i18n="doorTitle">דלת המרפאה — יחידה 9</p>
+          <p class="step-desc" data-i18n="doorDesc">השלט השחור עם הלוגו ושם ד"ר לוריאן נמצא ליד דלת הזכוכית. אין צורך לצלצל.</p>
         </div>
       </div>
 
       <div class="step">
         <div class="step-marker"><div class="step-num">6</div></div>
-        <div class="step-photo-wrap"><img class="step-photo" src="photos/step6-reception.jpg?v=2" alt="דלפק הקבלה של המרפאה" loading="lazy"></div>
+        <div class="step-photo-wrap"><img class="step-photo" src="photos/step6-reception.jpg?v=2" alt="דלפק הקבלה של המרפאה" loading="lazy" data-i18n-alt="receptionAlt"></div>
         <div class="step-body">
-          <p class="step-title">הגעתם!</p>
-          <p class="step-desc">התייצבו בקבלה, ואנחנו נדאג להמשך.</p>
+          <p class="step-title" data-i18n="receptionTitle">הגעתם!</p>
+          <p class="step-desc" data-i18n="receptionDesc">התייצבו בקבלה, ואנחנו נדאג להמשך.</p>
         </div>
       </div>
 
@@ -647,19 +714,19 @@
 
   <section>
     <div class="info-tile" style="text-align:center;">
-      <div class="info-label">לא מוצאים אותנו?</div>
-      <div class="info-value"><a class="phone-link" href="tel:0542221733">054-222-1733</a><br>נענה בשמחה ונדריך אתכם</div>
+      <div class="info-label" data-i18n="phoneLabel">לא מוצאים אותנו?</div>
+      <div class="info-value"><a class="phone-link" href="tel:0542221733">054-222-1733</a><br><span data-i18n="phoneNote">נענה בשמחה ונדריך אתכם</span></div>
     </div>
   </section>
 
-  <footer>
+  <footer data-i18n="footer">
     ד"ר מיקי לוריאן — שירותי בריאות בע"מ
   </footer>
 
 </div>
 
 <div class="lightbox" id="lightbox" hidden>
-  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="סגירה">✕</button>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="סגירה" data-i18n-aria="lightboxClose">✕</button>
   <img id="lightbox-img" src="" alt="">
 </div>
 
@@ -667,39 +734,276 @@
   import { animate } from "https://cdn.jsdelivr.net/npm/motion@11.13.5/mini/+esm";
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const ROUTES = {
-    a: {
-      photo: 'photos/entrance-a-street.jpg?v=3',
-      alt: 'כניסה A מרחוב ברודצקי',
-      title: 'הגיעו לכניסה A',
-      desc: 'מרחוב ברודצקי — הכניסה הראשית, מסומנת בגדול "43A".',
-      sub: 'ארבעה צעדים מכניסה A עד דלת המרפאה.',
-      skip: ['step-mall-plaza', 'step-lobby-mall', 'step-elevator']
+  const ROUTES_META = {
+    a: { photo: 'photos/entrance-a-street.jpg?v=3', skip: ['step-mall-plaza', 'step-lobby-mall', 'step-elevator'] },
+    b: { photo: 'photos/entrance-b-shufersal.jpg?v=2', skip: ['step-mall-plaza', 'step-lobby', 'step-lobby-mall', 'step-corridor'] },
+    c: { photo: 'photos/entrance-c-mall.jpg?v=2', skip: ['step-lobby', 'step-elevator'] }
+  };
+
+  const LANG_NAMES = { he: 'עברית', en: 'English', ru: 'Русский', ar: 'العربية' };
+  const LANG_DIR = { he: 'rtl', en: 'ltr', ru: 'ltr', ar: 'rtl' };
+
+  const I18N = {
+    he: {
+      t: {
+        pageTitle: 'איך מגיעים אלינו',
+        doctorAlt: 'ד"ר מיקי לוריאן',
+        eyebrow: 'מרפאת תל אביב',
+        lede: 'מדריך קצר מהבית עד לדלת המרפאה — כולל ניווט, וההליכה בתוך הבניין צעד־צעד.',
+        flowH2: 'איך מגיעים אלינו',
+        flowSub: 'מדריך צעד־צעד מהכניסה שלכם עד דלת המרפאה',
+        flowBtn: 'הציגו את המדריך',
+        addrLine: 'רחוב ברודצקי 43, כניסה ב׳, קומה 5',
+        addrCity: 'תל אביב',
+        wazeBtn: 'נווטו עם Waze',
+        gmapsBtn: 'נווטו עם Google Maps',
+        parkingHeader: 'חניה בסביבה',
+        parking1Title: 'חניון קניון רמת אביב',
+        parking1Desc: 'רחוב איינשטיין 40 — חניון מקורה, כ־5 דקות הליכה. האפשרות הכי בטוחה למצוא מקום.',
+        wazeParking: 'Waze לחניון',
+        gmapsParking: 'Google Maps לחניון',
+        parking2Title: 'חניה ברחוב בתשלום',
+        parking2Desc: 'לאורך ברודצקי ורחובות סמוכים — אזור כחול־לבן, תשלום באפליקציית פנגו או סלופארק.',
+        transitNote: 'מגיעים בתחבורה ציבורית? קווי אוטובוס רבים עוצרים לאורך רחוב ז׳בוטינסקי ופנקס, במרחק הליכה קצרה מהמרפאה.',
+        routeH2: 'מאיפה אתם מגיעים?',
+        routeSub: 'בחרו נקודת התחלה, ונראה לכם את הנתיב המדויק מהיכן שאתם עומדים.',
+        routeGroupAria: 'בחירת כניסה',
+        routeALabel: 'מרחוב ברודצקי',
+        routeBLabel: 'ליד שופרסל',
+        routeCLabel: 'מקניון רמת אביב',
+        yourRouteH2: 'הנתיב שלכם',
+        mallPlazaTitle: 'תגיעו לרחבה מול 43A',
+        mallPlazaDesc: 'יציאת הקניון מובילה לרחבה החיצונית, מול חזית הבניין המסומנת "43A".',
+        mallPlazaAlt: 'חזית 43A, כפי שנראית מהרחבה שמול יציאת הקניון',
+        lobbyTitle: 'בלובי, פנו לכיוון המעליות',
+        lobbyDesc: 'מכל כניסה — שילוט כחול יכוון אתכם ללובי המעליות המשותף.',
+        lobbyAlt: 'לובי הכניסה עם שילוט כניסה A וכניסה B',
+        lobbyMallAlt: 'מבט רחב על הלובי עם שילוט כניסה A וכניסה B',
+        elevatorTitle: 'עלו במעלית לקומה 5',
+        elevatorDesc: 'לוח הדיירים שליד המעלית מציג את ד"ר מיקי לוריאן בקומה 5, יחידה 9.',
+        elevatorAlt: 'לובי מעליות עם לוח קומות',
+        corridorTitle: 'בצאתכם מהמעלית, המשיכו במסדרון עד הסוף',
+        corridorDesc: 'הספרה הירוקה הגדולה "5" על הקיר מאשרת שהגעתם לקומה הנכונה.',
+        corridorAlt: 'מסדרון קומה 5 עם ספרת 5 ירוקה גדולה',
+        doorTitle: 'דלת המרפאה — יחידה 9',
+        doorDesc: 'השלט השחור עם הלוגו ושם ד"ר לוריאן נמצא ליד דלת הזכוכית. אין צורך לצלצל.',
+        doorAlt: 'דלת המרפאה עם שלט ד״ר מיקי לוריאן ומספר 9',
+        receptionTitle: 'הגעתם!',
+        receptionDesc: 'התייצבו בקבלה, ואנחנו נדאג להמשך.',
+        receptionAlt: 'דלפק הקבלה של המרפאה',
+        phoneLabel: 'לא מוצאים אותנו?',
+        phoneNote: 'נענה בשמחה ונדריך אתכם',
+        footer: 'ד"ר מיקי לוריאן — שירותי בריאות בע"מ',
+        lightboxClose: 'סגירה'
+      },
+      routes: {
+        a: { title: 'הגיעו לכניסה A', desc: 'מרחוב ברודצקי — הכניסה הראשית, מסומנת בגדול "43A".', alt: 'כניסה A מרחוב ברודצקי', sub: 'ארבעה צעדים מכניסה A עד דלת המרפאה.' },
+        b: { title: 'הגיעו לכניסה B', desc: 'בצד המבנה, ליד שופרסל — שילוט "43B" עם חץ מכוון פנימה.', alt: 'כניסה B ליד שופרסל', sub: 'ארבעה צעדים מכניסה B עד דלת המרפאה — עולים ישירות למעלית.' },
+        c: { title: 'צאו מהקניון לכיוון כניסה A', desc: 'מקניון רמת אביב — בצאתכם מהקניון פנו שמאלה, הכניסה תהיה בהמשך הדרך (אותה כניסה A, מהכיוון השני).', alt: 'יציאה מקניון רמת אביב לכיוון כניסה A', sub: 'חמישה צעדים מיציאת הקניון עד דלת המרפאה.' }
+      }
     },
-    b: {
-      photo: 'photos/entrance-b-shufersal.jpg?v=2',
-      alt: 'כניסה B ליד שופרסל',
-      title: 'הגיעו לכניסה B',
-      desc: 'בצד המבנה, ליד שופרסל — שילוט "43B" עם חץ מכוון פנימה.',
-      sub: 'ארבעה צעדים מכניסה B עד דלת המרפאה — עולים ישירות למעלית.',
-      skip: ['step-mall-plaza', 'step-lobby', 'step-lobby-mall', 'step-corridor']
+    en: {
+      t: {
+        pageTitle: 'How to Reach Us',
+        doctorAlt: 'Dr. Micki Lorian',
+        eyebrow: 'Tel Aviv Clinic',
+        lede: 'A quick guide from your home to the clinic door — including directions, and the walk through the building step by step.',
+        flowH2: 'How to Reach Us',
+        flowSub: 'Step-by-step guide from your entrance to the clinic door',
+        flowBtn: 'Show the guide',
+        addrLine: '43 Brodetzky St, Entrance B, 5th Floor',
+        addrCity: 'Tel Aviv',
+        wazeBtn: 'Navigate with Waze',
+        gmapsBtn: 'Navigate with Google Maps',
+        parkingHeader: 'Parking nearby',
+        parking1Title: 'Ramat Aviv Mall parking',
+        parking1Desc: '40 Einstein St — covered parking, about a 5-minute walk. The safest bet for finding a spot.',
+        wazeParking: 'Waze to the parking lot',
+        gmapsParking: 'Google Maps to the parking lot',
+        parking2Title: 'Paid street parking',
+        parking2Desc: 'Along Brodetzky and nearby streets — blue-and-white zone, pay via the Pango or Cellopark app.',
+        transitNote: "Coming by public transit? Many bus lines stop along Jabotinsky and Pinkas streets, a short walk from the clinic.",
+        routeH2: 'Where are you coming from?',
+        routeSub: "Pick your starting point, and we'll show you the exact route from where you are.",
+        routeGroupAria: 'Choose entrance',
+        routeALabel: 'From Brodetzky St',
+        routeBLabel: 'Near Shufersal',
+        routeCLabel: 'From Ramat Aviv Mall',
+        yourRouteH2: 'Your route',
+        mallPlazaTitle: 'Reach the plaza facing 43A',
+        mallPlazaDesc: 'The mall exit leads to the outdoor plaza, facing the building front marked "43A".',
+        mallPlazaAlt: '43A building front, as seen from the plaza facing the mall exit',
+        lobbyTitle: 'In the lobby, head toward the elevators',
+        lobbyDesc: 'From either entrance — blue signage will direct you to the shared elevator lobby.',
+        lobbyAlt: 'Entrance lobby with signage for Entrance A and Entrance B',
+        lobbyMallAlt: 'Wide view of the lobby with signage for Entrance A and Entrance B',
+        elevatorTitle: 'Take the elevator to floor 5',
+        elevatorDesc: 'The tenant board next to the elevator shows Dr. Micki Lorian on floor 5, unit 9.',
+        elevatorAlt: 'Elevator lobby with floor directory',
+        corridorTitle: 'Exiting the elevator, walk to the end of the corridor',
+        corridorDesc: 'The large green "5" on the wall confirms you\'re on the right floor.',
+        corridorAlt: 'Floor 5 corridor with a large green number 5',
+        doorTitle: 'Clinic door — unit 9',
+        doorDesc: "The black sign with the logo and Dr. Lorian's name is next to the glass door. No need to ring.",
+        doorAlt: "Clinic door with Dr. Micki Lorian's sign and number 9",
+        receptionTitle: "You've arrived!",
+        receptionDesc: "Check in at reception, and we'll take it from there.",
+        receptionAlt: 'Clinic reception desk',
+        phoneLabel: "Can't find us?",
+        phoneNote: "We'll gladly answer and guide you.",
+        footer: 'Dr. Micki Lorian — Healthcare Services Ltd.',
+        lightboxClose: 'Close'
+      },
+      routes: {
+        a: { title: 'Reach Entrance A', desc: 'From Brodetzky St — the main entrance, marked with a large "43A".', alt: 'Entrance A from Brodetzky St', sub: 'Four steps from Entrance A to the clinic door.' },
+        b: { title: 'Reach Entrance B', desc: 'On the side of the building, near Shufersal — signage "43B" with an arrow pointing in.', alt: 'Entrance B near Shufersal', sub: 'Four steps from Entrance B to the clinic door — straight up to the elevator.' },
+        c: { title: 'Exit the mall toward Entrance A', desc: 'From Ramat Aviv Mall — as you exit the mall, turn left; the entrance is further along (the same Entrance A, from the other side).', alt: 'Exit from Ramat Aviv Mall toward Entrance A', sub: 'Five steps from the mall exit to the clinic door.' }
+      }
     },
-    c: {
-      photo: 'photos/entrance-c-mall.jpg?v=2',
-      alt: 'יציאה מקניון רמת אביב לכיוון כניסה A',
-      title: 'צאו מהקניון לכיוון כניסה A',
-      desc: 'מקניון רמת אביב — בצאתכם מהקניון פנו שמאלה, הכניסה תהיה בהמשך הדרך (אותה כניסה A, מהכיוון השני).',
-      sub: 'חמישה צעדים מיציאת הקניון עד דלת המרפאה.',
-      skip: ['step-lobby', 'step-elevator']
+    ru: {
+      t: {
+        pageTitle: 'Как до нас добраться',
+        doctorAlt: 'Д-р Микки Лориан',
+        eyebrow: 'Клиника в Тель-Авиве',
+        lede: 'Краткое руководство от дома до двери клиники — включая маршрут и проход по зданию шаг за шагом.',
+        flowH2: 'Как до нас добраться',
+        flowSub: 'Пошаговое руководство от вашего входа до двери клиники',
+        flowBtn: 'Показать руководство',
+        addrLine: 'Улица Бродецки 43, вход Б, 5 этаж',
+        addrCity: 'Тель-Авив',
+        wazeBtn: 'Навигация через Waze',
+        gmapsBtn: 'Навигация через Google Maps',
+        parkingHeader: 'Парковка поблизости',
+        parking1Title: 'Парковка ТЦ Рамат Авив',
+        parking1Desc: 'Улица Эйнштейна 40 — крытая парковка, около 5 минут пешком. Самый надёжный способ найти место.',
+        wazeParking: 'Waze к парковке',
+        gmapsParking: 'Google Maps к парковке',
+        parking2Title: 'Платная парковка на улице',
+        parking2Desc: 'Вдоль улицы Бродецки и соседних улиц — бело-синяя зона, оплата через приложение Pango или Cellopark.',
+        transitNote: 'Едете на общественном транспорте? Многие автобусы останавливаются на улицах Жаботински и Пинкас, в нескольких минутах ходьбы от клиники.',
+        routeH2: 'Откуда вы приезжаете?',
+        routeSub: 'Выберите точку отправления, и мы покажем точный маршрут оттуда, где вы находитесь.',
+        routeGroupAria: 'Выбор входа',
+        routeALabel: 'С улицы Бродецки',
+        routeBLabel: 'Рядом с Shufersal',
+        routeCLabel: 'Из ТЦ Рамат Авив',
+        yourRouteH2: 'Ваш маршрут',
+        mallPlazaTitle: 'Выйдите на площадь напротив 43A',
+        mallPlazaDesc: 'Выход из торгового центра ведёт на открытую площадь напротив фасада здания с надписью «43A».',
+        mallPlazaAlt: 'Фасад здания 43A, вид с площади напротив выхода из торгового центра',
+        lobbyTitle: 'В холле поверните к лифтам',
+        lobbyDesc: 'От любого входа синие указатели приведут вас к общему лифтовому холлу.',
+        lobbyAlt: 'Холл входа с указателями входа A и входа B',
+        lobbyMallAlt: 'Широкий вид холла с указателями входа A и входа B',
+        elevatorTitle: 'Поднимитесь на лифте на 5 этаж',
+        elevatorDesc: 'На табло жильцов рядом с лифтом указано: д-р Микки Лориан, 5 этаж, офис 9.',
+        elevatorAlt: 'Лифтовой холл с табло этажей',
+        corridorTitle: 'Выйдя из лифта, идите по коридору до конца',
+        corridorDesc: 'Большая зелёная цифра «5» на стене подтверждает, что вы на нужном этаже.',
+        corridorAlt: 'Коридор 5 этажа с большой зелёной цифрой 5',
+        doorTitle: 'Дверь клиники — офис 9',
+        doorDesc: 'Чёрная табличка с логотипом и именем д-ра Лориан находится рядом со стеклянной дверью. Звонить не нужно.',
+        doorAlt: 'Дверь клиники с табличкой д-ра Микки Лориан и номером 9',
+        receptionTitle: 'Вы на месте!',
+        receptionDesc: 'Подойдите к стойке регистрации, а дальше мы всё организуем.',
+        receptionAlt: 'Стойка регистрации клиники',
+        phoneLabel: 'Не можете нас найти?',
+        phoneNote: 'Мы с радостью ответим и подскажем дорогу.',
+        footer: 'Д-р Микки Лориан — медицинские услуги, ООО',
+        lightboxClose: 'Закрыть'
+      },
+      routes: {
+        a: { title: 'Дойдите до входа A', desc: 'С улицы Бродецки — главный вход, отмечен крупной надписью «43A».', alt: 'Вход A с улицы Бродецки', sub: 'Четыре шага от входа A до двери клиники.' },
+        b: { title: 'Дойдите до входа B', desc: 'Сбоку здания, рядом с Shufersal — указатель «43B» со стрелкой внутрь.', alt: 'Вход B рядом с Shufersal', sub: 'Четыре шага от входа B до двери клиники — сразу к лифту.' },
+        c: { title: 'Выйдите из торгового центра к входу A', desc: 'Из ТЦ Рамат Авив — выйдя из торгового центра, поверните налево; вход будет чуть дальше (тот же вход A, с другой стороны).', alt: 'Выход из ТЦ Рамат Авив к входу A', sub: 'Пять шагов от выхода из торгового центра до двери клиники.' }
+      }
+    },
+    ar: {
+      t: {
+        pageTitle: 'كيف تصلون إلينا',
+        doctorAlt: 'د. ميكي لوريان',
+        eyebrow: 'عيادة تل أبيب',
+        lede: 'دليل قصير من المنزل حتى باب العيادة — يشمل التوجيه، والمشي داخل المبنى خطوة بخطوة.',
+        flowH2: 'كيف تصلون إلينا',
+        flowSub: 'دليل خطوة بخطوة من مدخلكم حتى باب العيادة',
+        flowBtn: 'عرض الدليل',
+        addrLine: 'شارع برودتسكي 43، مدخل B، الطابق 5',
+        addrCity: 'تل أبيب',
+        wazeBtn: 'التنقل عبر Waze',
+        gmapsBtn: 'التنقل عبر خرائط Google',
+        parkingHeader: 'مواقف قريبة',
+        parking1Title: 'موقف مول رمات أبيب',
+        parking1Desc: 'شارع أينشتاين 40 — موقف مسقوف، على بعد حوالي 5 دقائق سيرًا. الخيار الأكثر أمانًا لإيجاد مكان.',
+        wazeParking: 'Waze إلى الموقف',
+        gmapsParking: 'خرائط Google إلى الموقف',
+        parking2Title: 'وقوف مدفوع في الشارع',
+        parking2Desc: 'على طول شارع برودتسكي والشوارع المجاورة — منطقة زرقاء وبيضاء، الدفع عبر تطبيق Pango أو Cellopark.',
+        transitNote: 'قادمون بالمواصلات العامة؟ تتوقف خطوط حافلات كثيرة على طول شارعي جابوتنسكي وبينكاس، على مسافة قريبة سيرًا من العيادة.',
+        routeH2: 'من أين أنتم قادمون؟',
+        routeSub: 'اختاروا نقطة انطلاقكم، وسنعرض لكم المسار الدقيق من مكانكم.',
+        routeGroupAria: 'اختيار المدخل',
+        routeALabel: 'من شارع برودتسكي',
+        routeBLabel: 'بجانب Shufersal',
+        routeCLabel: 'من مول رمات أبيب',
+        yourRouteH2: 'مسارك',
+        mallPlazaTitle: 'صلوا إلى الساحة المقابلة لـ 43A',
+        mallPlazaDesc: 'يؤدي مخرج المول إلى الساحة الخارجية، مقابل واجهة المبنى المكتوب عليها "43A".',
+        mallPlazaAlt: 'واجهة المبنى 43A، كما تُرى من الساحة المقابلة لمخرج المول',
+        lobbyTitle: 'في اللوبي، اتجهوا نحو المصاعد',
+        lobbyDesc: 'من أي مدخل — ستوجهكم لافتات زرقاء إلى لوبي المصاعد المشترك.',
+        lobbyAlt: 'لوبي المدخل مع لافتات المدخل A والمدخل B',
+        lobbyMallAlt: 'منظر واسع للوبي مع لافتات المدخل A والمدخل B',
+        elevatorTitle: 'اصعدوا بالمصعد إلى الطابق 5',
+        elevatorDesc: 'تُظهر لوحة السكان بجانب المصعد: د. ميكي لوريان، الطابق 5، الوحدة 9.',
+        elevatorAlt: 'لوبي المصاعد مع لوحة الطوابق',
+        corridorTitle: 'عند الخروج من المصعد، تابعوا في الممر حتى النهاية',
+        corridorDesc: 'الرقم الأخضر الكبير "5" على الجدار يؤكد أنكم وصلتم إلى الطابق الصحيح.',
+        corridorAlt: 'ممر الطابق 5 مع رقم 5 أخضر كبير',
+        doorTitle: 'باب العيادة — الوحدة 9',
+        doorDesc: 'اللافتة السوداء التي تحمل الشعار واسم د. لوريان توجد بجانب الباب الزجاجي. لا داعي لقرع الجرس.',
+        doorAlt: 'باب العيادة مع لافتة د. ميكي لوريان ورقم 9',
+        receptionTitle: 'لقد وصلتم!',
+        receptionDesc: 'توجهوا إلى الاستقبال، وسنهتم بالباقي.',
+        receptionAlt: 'طاولة استقبال العيادة',
+        phoneLabel: 'لا تجدوننا؟',
+        phoneNote: 'سنسعد بالرد وإرشادكم.',
+        footer: 'د. ميكي لوريان — خدمات صحية م.ض.',
+        lightboxClose: 'إغلاق'
+      },
+      routes: {
+        a: { title: 'صلوا إلى المدخل A', desc: 'من شارع برودتسكي — المدخل الرئيسي، مكتوب عليه بخط كبير "43A".', alt: 'المدخل A من شارع برودتسكي', sub: 'أربع خطوات من المدخل A حتى باب العيادة.' },
+        b: { title: 'صلوا إلى المدخل B', desc: 'على جانب المبنى، بجانب Shufersal — لافتة "43B" مع سهم يشير إلى الداخل.', alt: 'المدخل B بجانب Shufersal', sub: 'أربع خطوات من المدخل B حتى باب العيادة — صعودًا مباشرة إلى المصعد.' },
+        c: { title: 'اخرجوا من المول باتجاه المدخل A', desc: 'من مول رمات أبيب — عند خروجكم من المول انعطفوا يسارًا، المدخل سيكون بعد قليل (نفس المدخل A، من الجهة الأخرى).', alt: 'الخروج من مول رمات أبيب باتجاه المدخل A', sub: 'خمس خطوات من مخرج المول حتى باب العيادة.' }
+      }
     }
   };
+
+  // ponytail: minimal runnable check — catches a typo'd or missing translation key immediately in the console.
+  (function validateI18n(){
+    const base = Object.keys(I18N.he.t).sort().join(',');
+    Object.keys(I18N).forEach(lang => {
+      if (Object.keys(I18N[lang].t).sort().join(',') !== base) {
+        console.error(`i18n: "${lang}" translation keys don't match "he"`);
+      }
+      ['a', 'b', 'c'].forEach(r => {
+        if (!I18N[lang].routes[r]) console.error(`i18n: "${lang}" missing route "${r}"`);
+      });
+    });
+  })();
+
+  function getRoute(key){
+    return { ...ROUTES_META[key], ...I18N[currentLang].routes[key] };
+  }
 
   const photoEl = document.getElementById('entrance-photo');
   const titleEl = document.getElementById('entrance-title');
   const descEl = document.getElementById('entrance-desc');
   const subEl = document.getElementById('route-sub');
-  const buttons = document.querySelectorAll('.route-btn');
+  const routeButtons = document.querySelectorAll('.route-btn');
   const allSteps = document.querySelectorAll('.steps .step');
+
+  let currentLang = 'he';
+  let currentRouteKey = 'a';
 
   function fillRoute(route){
     photoEl.src = route.photo;
@@ -730,16 +1034,70 @@
     }
   }
 
-  buttons.forEach(btn => {
+  routeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const route = ROUTES[btn.dataset.route];
-      if (!route) return;
-      applyRoute(route);
-      buttons.forEach(b => b.classList.toggle('is-active', b === btn));
+      if (!ROUTES_META[btn.dataset.route]) return;
+      currentRouteKey = btn.dataset.route;
+      applyRoute(getRoute(currentRouteKey));
+      routeButtons.forEach(b => b.classList.toggle('is-active', b === btn));
     });
   });
 
-  fillRoute(ROUTES.a);
+  const langBtn = document.getElementById('lang-btn');
+  const langBtnLabel = document.getElementById('lang-btn-label');
+  const langMenu = document.getElementById('lang-menu');
+  const langMenuButtons = document.querySelectorAll('#lang-menu button');
+
+  function applyLanguage(lang){
+    if (!I18N[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = LANG_DIR[lang];
+    document.title = I18N[lang].t.pageTitle;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const value = I18N[lang].t[el.dataset.i18n];
+      if (value !== undefined) el.textContent = value;
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const value = I18N[lang].t[el.dataset.i18nAlt];
+      if (value !== undefined) el.alt = value;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const value = I18N[lang].t[el.dataset.i18nAria];
+      if (value !== undefined) el.setAttribute('aria-label', value);
+    });
+
+    fillRoute(getRoute(currentRouteKey));
+
+    langBtnLabel.textContent = LANG_NAMES[lang];
+    langMenuButtons.forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
+
+    try { localStorage.setItem('clinic-lang', lang); } catch {}
+  }
+
+  langBtn.addEventListener('click', () => {
+    const opening = langMenu.hidden;
+    langMenu.hidden = !opening;
+    langBtn.setAttribute('aria-expanded', String(opening));
+  });
+  langMenuButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLanguage(btn.dataset.lang);
+      langMenu.hidden = true;
+      langBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!langMenu.hidden && !e.target.closest('.lang-switch')) {
+      langMenu.hidden = true;
+      langBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  let initialLang = 'he';
+  try { initialLang = localStorage.getItem('clinic-lang') || 'he'; } catch {}
+  applyLanguage(initialLang);
 
   const flowTrigger = document.getElementById('flow-trigger');
   const flow = document.getElementById('flow');
