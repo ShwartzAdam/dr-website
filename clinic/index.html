@@ -5,14 +5,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="ד&quot;ר מיקי לוריאן — איך מגיעים אלינו">
-<meta property="og:description" content="מדריך קצר מהבית עד לדלת המרפאה — כולל ניווט, וההליכה בתוך הבניין צעד־צעד.">
-<meta property="og:image" content="https://shwartzadam.github.io/dr-website/clinic/photos/dr-lorian.jpg">
+<meta property="og:description" content="ברודצקי 43, תל אביב — מדריך קצר מהבית עד לדלת המרפאה, כולל ניווט וההליכה בתוך הבניין צעד־צעד.">
+<meta property="og:image" content="https://shwartzadam.github.io/dr-website/clinic/photos/logo-transparent.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shwartzadam.github.io/dr-website/clinic/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ד&quot;ר מיקי לוריאן — איך מגיעים אלינו">
-<meta name="twitter:description" content="מדריך קצר מהבית עד לדלת המרפאה — כולל ניווט, וההליכה בתוך הבניין צעד־צעד.">
-<meta name="twitter:image" content="https://shwartzadam.github.io/dr-website/clinic/photos/dr-lorian.jpg">
+<meta name="twitter:description" content="ברודצקי 43, תל אביב — מדריך קצר מהבית עד לדלת המרפאה, כולל ניווט וההליכה בתוך הבניין צעד־צעד.">
+<meta name="twitter:image" content="https://shwartzadam.github.io/dr-website/clinic/photos/logo-transparent.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@400;500;600;700&display=swap');
 
@@ -735,9 +735,9 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const ROUTES_META = {
-    a: { photo: 'photos/entrance-a-street.jpg?v=3', skip: ['step-mall-plaza', 'step-lobby-mall', 'step-elevator'] },
+    a: { photo: 'photos/entrance-a-street.jpg?v=3', skip: ['step-mall-plaza', 'step-lobby-mall'] },
     b: { photo: 'photos/entrance-b-shufersal.jpg?v=2', skip: ['step-mall-plaza', 'step-lobby', 'step-lobby-mall', 'step-corridor'] },
-    c: { photo: 'photos/entrance-c-mall.jpg?v=2', skip: ['step-lobby', 'step-elevator'] }
+    c: { photo: 'photos/entrance-c-mall.jpg?v=2', skip: ['step-lobby'] }
   };
 
   const LANG_NAMES = { he: 'עברית', en: 'English', ru: 'Русский', ar: 'العربية' };
@@ -797,9 +797,9 @@
         lightboxClose: 'סגירה'
       },
       routes: {
-        a: { title: 'הגיעו לכניסה A', desc: 'מרחוב ברודצקי — הכניסה הראשית, מסומנת בגדול "43A".', alt: 'כניסה A מרחוב ברודצקי', sub: 'ארבעה צעדים מכניסה A עד דלת המרפאה.' },
-        b: { title: 'הגיעו לכניסה B', desc: 'בצד המבנה, ליד שופרסל — שילוט "43B" עם חץ מכוון פנימה.', alt: 'כניסה B ליד שופרסל', sub: 'ארבעה צעדים מכניסה B עד דלת המרפאה — עולים ישירות למעלית.' },
-        c: { title: 'צאו מהקניון לכיוון כניסה A', desc: 'מקניון רמת אביב — בצאתכם מהקניון פנו שמאלה, הכניסה תהיה בהמשך הדרך (אותה כניסה A, מהכיוון השני).', alt: 'יציאה מקניון רמת אביב לכיוון כניסה A', sub: 'חמישה צעדים מיציאת הקניון עד דלת המרפאה.' }
+        a: { title: 'הגיעו לכניסה A', desc: 'מרחוב ברודצקי — הכניסה הראשית, מסומנת בגדול "43A".', alt: 'כניסה A מרחוב ברודצקי', sub: 'חמישה צעדים מכניסה A עד דלת המרפאה.' },
+        b: { title: 'הגיעו לכניסה B', desc: 'בצד המבנה, ליד שופרסל — שילוט "43B" עם חץ מכוון פנימה.', alt: 'כניסה B ליד שופרסל', sub: 'שלושה צעדים מכניסה B עד דלת המרפאה — עולים ישירות למעלית.' },
+        c: { title: 'צאו מהקניון לכיוון כניסה A', desc: 'מקניון רמת אביב — בצאתכם מהקניון פנו שמאלה, הכניסה תהיה בהמשך הדרך (אותה כניסה A, מהכיוון השני).', alt: 'יציאה מקניון רמת אביב לכיוון כניסה A', sub: 'שישה צעדים מיציאת הקניון עד דלת המרפאה.' }
       }
     },
     en: {
@@ -855,9 +855,9 @@
         lightboxClose: 'Close'
       },
       routes: {
-        a: { title: 'Reach Entrance A', desc: 'From Brodetzky St — the main entrance, marked with a large "43A".', alt: 'Entrance A from Brodetzky St', sub: 'Four steps from Entrance A to the clinic door.' },
-        b: { title: 'Reach Entrance B', desc: 'On the side of the building, near Shufersal — signage "43B" with an arrow pointing in.', alt: 'Entrance B near Shufersal', sub: 'Four steps from Entrance B to the clinic door — straight up to the elevator.' },
-        c: { title: 'Exit the mall toward Entrance A', desc: 'From Ramat Aviv Mall — as you exit the mall, turn left; the entrance is further along (the same Entrance A, from the other side).', alt: 'Exit from Ramat Aviv Mall toward Entrance A', sub: 'Five steps from the mall exit to the clinic door.' }
+        a: { title: 'Reach Entrance A', desc: 'From Brodetzky St — the main entrance, marked with a large "43A".', alt: 'Entrance A from Brodetzky St', sub: 'Five steps from Entrance A to the clinic door.' },
+        b: { title: 'Reach Entrance B', desc: 'On the side of the building, near Shufersal — signage "43B" with an arrow pointing in.', alt: 'Entrance B near Shufersal', sub: 'Three steps from Entrance B to the clinic door — straight up to the elevator.' },
+        c: { title: 'Exit the mall toward Entrance A', desc: 'From Ramat Aviv Mall — as you exit the mall, turn left; the entrance is further along (the same Entrance A, from the other side).', alt: 'Exit from Ramat Aviv Mall toward Entrance A', sub: 'Six steps from the mall exit to the clinic door.' }
       }
     },
     ru: {
@@ -913,9 +913,9 @@
         lightboxClose: 'Закрыть'
       },
       routes: {
-        a: { title: 'Дойдите до входа A', desc: 'С улицы Бродецки — главный вход, отмечен крупной надписью «43A».', alt: 'Вход A с улицы Бродецки', sub: 'Четыре шага от входа A до двери клиники.' },
-        b: { title: 'Дойдите до входа B', desc: 'Сбоку здания, рядом с Shufersal — указатель «43B» со стрелкой внутрь.', alt: 'Вход B рядом с Shufersal', sub: 'Четыре шага от входа B до двери клиники — сразу к лифту.' },
-        c: { title: 'Выйдите из торгового центра к входу A', desc: 'Из ТЦ Рамат Авив — выйдя из торгового центра, поверните налево; вход будет чуть дальше (тот же вход A, с другой стороны).', alt: 'Выход из ТЦ Рамат Авив к входу A', sub: 'Пять шагов от выхода из торгового центра до двери клиники.' }
+        a: { title: 'Дойдите до входа A', desc: 'С улицы Бродецки — главный вход, отмечен крупной надписью «43A».', alt: 'Вход A с улицы Бродецки', sub: 'Пять шагов от входа A до двери клиники.' },
+        b: { title: 'Дойдите до входа B', desc: 'Сбоку здания, рядом с Shufersal — указатель «43B» со стрелкой внутрь.', alt: 'Вход B рядом с Shufersal', sub: 'Три шага от входа B до двери клиники — сразу к лифту.' },
+        c: { title: 'Выйдите из торгового центра к входу A', desc: 'Из ТЦ Рамат Авив — выйдя из торгового центра, поверните налево; вход будет чуть дальше (тот же вход A, с другой стороны).', alt: 'Выход из ТЦ Рамат Авив к входу A', sub: 'Шесть шагов от выхода из торгового центра до двери клиники.' }
       }
     },
     ar: {
@@ -971,9 +971,9 @@
         lightboxClose: 'إغلاق'
       },
       routes: {
-        a: { title: 'صلوا إلى المدخل A', desc: 'من شارع برودتسكي — المدخل الرئيسي، مكتوب عليه بخط كبير "43A".', alt: 'المدخل A من شارع برودتسكي', sub: 'أربع خطوات من المدخل A حتى باب العيادة.' },
-        b: { title: 'صلوا إلى المدخل B', desc: 'على جانب المبنى، بجانب Shufersal — لافتة "43B" مع سهم يشير إلى الداخل.', alt: 'المدخل B بجانب Shufersal', sub: 'أربع خطوات من المدخل B حتى باب العيادة — صعودًا مباشرة إلى المصعد.' },
-        c: { title: 'اخرجوا من المول باتجاه المدخل A', desc: 'من مول رمات أبيب — عند خروجكم من المول انعطفوا يسارًا، المدخل سيكون بعد قليل (نفس المدخل A، من الجهة الأخرى).', alt: 'الخروج من مول رمات أبيب باتجاه المدخل A', sub: 'خمس خطوات من مخرج المول حتى باب العيادة.' }
+        a: { title: 'صلوا إلى المدخل A', desc: 'من شارع برودتسكي — المدخل الرئيسي، مكتوب عليه بخط كبير "43A".', alt: 'المدخل A من شارع برودتسكي', sub: 'خمس خطوات من المدخل A حتى باب العيادة.' },
+        b: { title: 'صلوا إلى المدخل B', desc: 'على جانب المبنى، بجانب Shufersal — لافتة "43B" مع سهم يشير إلى الداخل.', alt: 'المدخل B بجانب Shufersal', sub: 'ثلاث خطوات من المدخل B حتى باب العيادة — صعودًا مباشرة إلى المصعد.' },
+        c: { title: 'اخرجوا من المول باتجاه المدخل A', desc: 'من مول رمات أبيب — عند خروجكم من المول انعطفوا يسارًا، المدخل سيكون بعد قليل (نفس المدخل A، من الجهة الأخرى).', alt: 'الخروج من مول رمات أبيب باتجاه المدخل A', sub: 'ست خطوات من مخرج المول حتى باب العيادة.' }
       }
     }
   };
