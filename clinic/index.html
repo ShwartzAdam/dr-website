@@ -615,11 +615,11 @@
     <h2 data-i18n="routeH2">מאיפה אתם מגיעים?</h2>
     <p class="section-sub" data-i18n="routeSub">בחרו נקודת התחלה, ונראה לכם את הנתיב המדויק מהיכן שאתם עומדים.</p>
     <div class="route-picker" role="group" aria-label="בחירת כניסה" data-i18n-aria="routeGroupAria">
-      <button type="button" id="route-a" class="route-btn is-active" data-route="a">
-        <span class="route-btn-tag">A</span> <span data-i18n="routeALabel">מרחוב ברודצקי</span>
-      </button>
-      <button type="button" id="route-b" class="route-btn" data-route="b">
+      <button type="button" id="route-b" class="route-btn is-active" data-route="b">
         <span class="route-btn-tag">B</span> <span data-i18n="routeBLabel">ליד שופרסל</span>
+      </button>
+      <button type="button" id="route-a" class="route-btn" data-route="a">
+        <span class="route-btn-tag">A</span> <span data-i18n="routeALabel">מרחוב ברודצקי</span>
       </button>
       <button type="button" id="route-c" class="route-btn" data-route="c">
         <span class="route-btn-tag">A</span> <span data-i18n="routeCLabel">מקניון רמת אביב</span>
@@ -1000,7 +1000,7 @@
   const allSteps = document.querySelectorAll('.steps .step');
 
   let currentLang = 'he';
-  let currentRouteKey = 'a';
+  let currentRouteKey = 'b';
 
   function fillRoute(route){
     photoEl.src = route.photo;
