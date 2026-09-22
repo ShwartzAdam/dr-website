@@ -1,5 +1,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KFH4RG01M9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KFH4RG01M9');
+</script>
 <title>איך מגיעים אלינו</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -1035,6 +1043,7 @@
     btn.addEventListener('click', () => {
       if (!ROUTES_META[btn.dataset.route]) return;
       currentRouteKey = btn.dataset.route;
+      gtag('event', 'route_select', { route: currentRouteKey });
       applyRoute(getRoute(currentRouteKey));
       routeButtons.forEach(b => b.classList.toggle('is-active', b === btn));
     });
@@ -1081,6 +1090,7 @@
   langMenuButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       applyLanguage(btn.dataset.lang);
+      gtag('event', 'language_select', { lang: btn.dataset.lang });
       langMenu.hidden = true;
       langBtn.setAttribute('aria-expanded', 'false');
     });
@@ -1101,6 +1111,7 @@
   flowTrigger.addEventListener('click', async () => {
     const opening = flow.hidden;
     if (opening) {
+      gtag('event', 'guide_open');
       flow.hidden = false;
       flowTrigger.classList.add('is-open');
       if (!reduceMotion) {
@@ -1141,8 +1152,12 @@
   }
 
   document.querySelectorAll('.step-photo').forEach(img => {
-    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    img.addEventListener('click', () => {
+      gtag('event', 'photo_zoom', { photo: img.src.split('/').pop().split('?')[0], route: currentRouteKey });
+      openLightbox(img.src, img.alt);
+    });
   });
+  document.querySelector('.phone-link').addEventListener('click', () => gtag('event', 'phone_click'));
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
