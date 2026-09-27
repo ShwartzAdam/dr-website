@@ -1084,6 +1084,7 @@
 
   langBtn.addEventListener('click', () => {
     const opening = langMenu.hidden;
+    if (opening) gtag('event', 'language_menu_open');
     langMenu.hidden = !opening;
     langBtn.setAttribute('aria-expanded', String(opening));
   });
@@ -1119,6 +1120,7 @@
       }
       flow.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
     } else {
+      gtag('event', 'guide_close');
       flowTrigger.classList.remove('is-open');
       if (!reduceMotion) {
         await animate(flow, { opacity: [1, 0] }, { duration: 0.15, easing: 'ease-in' }).finished;
@@ -1143,6 +1145,7 @@
   }
   async function closeLightbox(){
     if (lightbox.hidden) return;
+    gtag('event', 'photo_close', { photo: lightboxImg.src.split('/').pop().split('?')[0], route: currentRouteKey });
     if (!reduceMotion) {
       await animate(lightboxImg, { opacity: [1, 0], scale: [1, 0.96] }, { duration: 0.12, easing: 'ease-in' }).finished;
     }
@@ -1153,10 +1156,14 @@
 
   document.querySelectorAll('.step-photo').forEach(img => {
     img.addEventListener('click', () => {
-      gtag('event', 'photo_zoom', { photo: img.src.split('/').pop().split('?')[0], route: currentRouteKey });
+      gtag('event', 'photo_open', { photo: img.src.split('/').pop().split('?')[0], route: currentRouteKey });
       openLightbox(img.src, img.alt);
     });
   });
+  document.querySelectorAll('a.btn').forEach(a => a.addEventListener('click', () => gtag('event', 'navigate_click', {
+    app: a.href.includes('waze.com') ? 'waze' : 'google_maps',
+    destination: a.closest('.parking-links') ? 'parking' : 'clinic',
+  })));
   document.querySelector('.phone-link').addEventListener('click', () => gtag('event', 'phone_click'));
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
